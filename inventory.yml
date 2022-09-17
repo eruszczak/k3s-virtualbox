@@ -1,0 +1,18 @@
+all:
+  children:
+    masters:
+      hosts:
+        master0:
+          ansible_host: 192.168.100.200
+          memory: 1024
+          cpu: 1
+    workers:
+      hosts:
+        worker0:
+          ansible_host: 192.168.100.201
+          memory: 1024
+          cpu: 1
+        worker1:
+          ansible_host: 192.168.100.202
+          memory: 1024
+          cpu: 1

@@ -1,0 +1,8 @@
+---
+- name: Install required system packages
+  apt:
+    pkg:
+      - net-tools
+      - curl
+    state: latest
+    update_cache: true

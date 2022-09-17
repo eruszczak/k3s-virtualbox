@@ -1,0 +1,4 @@
+---
+k3s_version: 'v1.25.0+k3s1'
+host_username: vagrant
+flannel_iface: eth1

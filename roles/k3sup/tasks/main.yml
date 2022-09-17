@@ -1,0 +1,47 @@
+---
+  - name: Fetch get.sh
+    get_url:
+      url: https://get.k3sup.dev
+      dest: /tmp/get.sh
+      mode: 0755
+    become: yes
+    become_user: root
+
+  - name: Install k3s binary
+    command: /tmp/get.sh
+    become: yes
+    become_user: root
+
+  - name: Create master server with k3s
+    command:
+    args:
+      argv:
+        - k3sup
+        - install
+        - --ip
+        - "{{ hostvars[item].ansible_host }}"
+        - --user
+        - "{{ host_username }}"
+        - --k3s-version
+        - "{{ k3s_version }}"
+        - --k3s-extra-args
+        - "--disable traefik --disable servicelb --disable local-storage --flannel-iface={{ flannel_iface }}"
+    with_items: "{{ groups['masters'] }}"
+
+  - name: Add worker nodes
+    command:
+    args:
+      argv:
+        - k3sup
+        - join
+        - --ip
+        - "{{ hostvars[item].ansible_host }}"
+        - --server-ip
+        - "{{ hostvars[groups.masters.0].ansible_host }}"
+        - --user
+        - "{{ host_username }}"
+        - --k3s-version
+        - "{{ k3s_version }}"
+        - --k3s-extra-args
+        - "--flannel-iface={{ flannel_iface }}"
+    with_items: "{{ groups['workers'] }}"
