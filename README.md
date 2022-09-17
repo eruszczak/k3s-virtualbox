@@ -31,31 +31,28 @@ all:
           cpu: 1
 ```
 - Linux
-    - Install docker, VirtualBox, vagrant, ansible
+    - Install VirtualBox, kubectl, vagrant, ansible
 - Windows 🤦‍♂️😂
     - Install VirtualBox
-    - If you are on Windows, ansible won't work. Install Docker Desktop with [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install)
+    - [Install WSL2](https://docs.microsoft.com/en-us/windows/wsl/install) (because you can't install Ansible on Windows)
     - Create Ubuntu distribution: `wsl --install -d ubuntu`
     - Convert distribution to use WSL2: `wsl --set-version ubuntu 2`
-    - Docker desktop → Settings → Resources → WSL integration → Enable integration for Ubuntu
     - Enter the machine `wsl -d Ubuntu`
-    - Check if Docker integration is working: `docker run hello-world`
-    - Install ansible
+    - Install ansible, kubectl
     - Install vagrant and configure it to work with VirtualBox that is installed on the host. Helpful resources:
         - [vagrant up – Running Vagrant under WSL2](https://thedatabaseme.de/2022/02/20/vagrant-up-running-vagrant-under-wsl2/)
         - [Vagrant and Windows Subsystem for Linux](https://www.vagrantup.com/docs/other/wsl)
 - `ssh-keygen -C wsl2` - generate `~/.ssh/id_rsa` and `~/.ssh/id_rsa.pub` keys. Vagrant will append `id_rsa.pub` to `~/.ssh/authorized_keys` of each VM so that each VM will be accessible over SSH.
 - `make` - this command will use Vagrant to create declared virtual machines and then provision them via Ansible
 - after a few minutes, the cluster should be set up and in the current directory `kubeconfig` should be created
-- install kubectl
 - verify the cluster is running:
 
 ```bash
-$ kubectl get nodes --kubeconfig=./kubeconfig
-NAME      STATUS   ROLES                  AGE     VERSION
-worker0   Ready    <none>                 4m19s   v1.25.0+k3s1
-master0   Ready    control-plane,master   33m     v1.25.0+k3s1
-worker1   Ready    <none>                 3m      v1.25.0+k3s1
+$ kubectl --kubeconfig=./kubeconfig get nodes -o wide
+NAME      STATUS   ROLES                  AGE   VERSION        INTERNAL-IP        OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+worker0   Ready    <none>                 5m   v1.25.0+k3s1   192.168.100.201    Ubuntu 22.04.1 LTS   5.15.0-46-generic   containerd://1.6.8-k3s1
+master0   Ready    control-plane,master   4m   v1.25.0+k3s1   192.168.100.200    Ubuntu 22.04.1 LTS   5.15.0-46-generic   containerd://1.6.8-k3s1
+worker1   Ready    <none>                 5m   v1.25.0+k3s1   192.168.100.202    Ubuntu 22.04.1 LTS   5.15.0-46-generic   containerd://1.6.8-k3s1
 ```
 
 ```mermaid
