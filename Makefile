@@ -4,7 +4,7 @@ console:
 	ansible-console --inventory inventory.yml
 
 playbook:
-	ansible-playbook site.yml --ask-become-pass --inventory inventory.yml 
+	ansible-playbook site.yml --inventory inventory.yml 
 
 vagrant:
 	vagrant up
@@ -14,4 +14,4 @@ clean:
 
 k3s:
 	# ansible-playbook roles/k3sup/tasks/main.yml
-	ansible-playbook roles/k3sup/tasks/main.yml --ask-become-pass --inventory inventory.yml
+	ansible-playbook roles/k3sup/tasks/main.yml --inventory inventory.yml

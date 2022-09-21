@@ -4,13 +4,9 @@
       url: https://get.k3sup.dev
       dest: /tmp/get.sh
       mode: 0755
-    become: yes
-    become_user: root
 
   - name: Install k3s binary
     command: /tmp/get.sh
-    become: yes
-    become_user: root
 
   - name: Create master server with k3s
     command:
@@ -27,6 +23,7 @@
         - --k3s-extra-args
         - "--disable traefik --disable servicelb --disable local-storage --flannel-iface={{ flannel_iface }}"
     with_items: "{{ groups['masters'] }}"
+    when: groups.masters is defined
 
   - name: Add worker nodes
     command:
@@ -45,3 +42,4 @@
         - --k3s-extra-args
         - "--flannel-iface={{ flannel_iface }}"
     with_items: "{{ groups['workers'] }}"
+    when: groups.workers is defined
