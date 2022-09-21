@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
       config.vm.define host do |node|
         node.vm.box = vm_box
         node.vm.network "public_network", bridge: default_interface, ip: host_vars['ansible_host']
+        # node.vm.network "public_network", bridge: default_interface # IP assigned via DHCP
         node.vm.hostname = host
         # node.vm.disk :disk, size: disk_size, primary: true
         node.vm.provider "virtualbox" do |v|
@@ -23,6 +24,10 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/me.pub"
+
+  if Vagrant.has_plugin?("vagrant-timezone")
+    config.timezone.value = :host
+  end
 
   config.vm.provision "shell", inline: <<-SHELL
     cat /home/vagrant/.ssh/me.pub >> /home/vagrant/.ssh/authorized_keys

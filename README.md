@@ -1,5 +1,5 @@
-# k3s-virtualbox-cluster-bootstraper
-This project makes it very easy to create single- and multi-node k3s clusters in VirtualBox, e.g. for local development on Kubernetes.
+# k3s-virtualbox
+This project makes it very easy to create single- and multi-node k3s cluster in VirtualBox, e.g. for local development on Kubernetes.
 
 My inspirations for this project:
 - [k3d](https://github.com/k3d-io/k3d) (the idea is pretty similar, but it uses containers which are much more lightweight compared to virtual machines)
@@ -43,6 +43,7 @@ all:
         - [vagrant up – Running Vagrant under WSL2](https://thedatabaseme.de/2022/02/20/vagrant-up-running-vagrant-under-wsl2/)
         - [Vagrant and Windows Subsystem for Linux](https://www.vagrantup.com/docs/other/wsl)
 - `ssh-keygen -C wsl2` - generate `~/.ssh/id_rsa` and `~/.ssh/id_rsa.pub` keys. Vagrant will append `id_rsa.pub` to `~/.ssh/authorized_keys` of each VM so that each VM will be accessible over SSH.
+- `vagrant plugin install vagrant-timezone`
 - `make` - this command will use Vagrant to create declared virtual machines and then provision them via Ansible
 - after a few minutes, the cluster should be set up and in the current directory `kubeconfig` should be created
 - verify the cluster is running:
