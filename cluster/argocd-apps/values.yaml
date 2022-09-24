@@ -1,0 +1,11 @@
+source:
+  repoUrl: https://github.com/erykio/k3s-virtualbox.git
+  revision: master
+
+apps:
+  - appName: metallb
+    path: cluster/apps/metallb
+    namespace: metallb-system
+  - appName: ingress-nginx
+    path: cluster/apps/ingress-nginx
+    namespace: ingress-nginx
