@@ -1,0 +1,19 @@
+argo-cd:
+  crds:
+    install: true # -- Install and upgrade CRDs
+    keep: false # -- Keep CRDs on chart uninstall
+  server:
+    extraArgs:
+      - --insecure
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      hosts:
+        - argocd.192-168-0-230.nip.io
+      tls: []
+
+  configs:
+    secret: # TODO find a different (not manual) way to encrypt this password, so the password can be stored in the plain text too
+      argocdServerAdminPassword: $2a$12$B3gFAA31nicwazIDbW2.yOjdDletqiGcddOgqbmWxyajElGDppxVm # -- Bcrypt hashed admin password
