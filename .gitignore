@@ -1,3 +1,9 @@
 **/.vagrant*
 kubeconfig
+k3sup
 /.idea
+
+# Helm stuff
+**/charts
+requirements.lock
+Chart.lock
