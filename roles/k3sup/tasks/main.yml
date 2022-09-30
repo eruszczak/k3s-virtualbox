@@ -14,6 +14,11 @@
       argv:
         - k3sup
         - install
+        - --local-path
+        - "{{ lookup('env', 'KUBECONFIG') }}"
+        - --merge
+        - --context
+        - "k3s-virtualbox"
         - --ip
         - "{{ hostvars[item].ansible_host }}"
         - --user
