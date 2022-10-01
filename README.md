@@ -130,14 +130,14 @@ flowchart LR
         <td>Bootstrap K3s over SSH</td>
     </tr>
     <tr>
-        <td><img width="32" src="https://simpleicons.org/icons/diagramsdotnet.svg"></td>
-        <td><a href="https://github.com/mermaid-js/mermaid">mermaid</a></td>
-        <td>JavaScript-based diagramming and charting tool</td>
-    </tr>
-    <!-- <tr>
         <td><img width="32" src="https://cncf-branding.netlify.app/img/projects/helm/icon/color/helm-icon-color.svg"></td>
         <td><a href="https://helm.sh">Helm</a></td>
         <td>The package manager for Kubernetes</td>
+    </tr>
+    <tr>
+        <td><img width="32" src="https://camo.githubusercontent.com/42ecb0e82021bf95ed3bc09ccab58ab03a4c6b8b8d22f6c628c14c38244e641d/68747470733a2f2f636e63662d6272616e64696e672e6e65746c6966792e6170702f696d672f70726f6a656374732f6172676f2f69636f6e2f636f6c6f722f6172676f2d69636f6e2d636f6c6f722e737667"></td>
+        <td><a href="https://helm.sh">ArgoCD</a></td>
+        <td>https://argoproj.github.io/</td>
     </tr>
     <tr>
         <td><img width="32" src="https://avatars.githubusercontent.com/u/60239468?s=200&v=4"></td>
@@ -146,7 +146,12 @@ flowchart LR
     </tr>
     <tr>
         <td><img width="32" src="https://avatars.githubusercontent.com/u/1412239?s=200&v=4"></td>
-        <td><a href="https://www.nginx.com">NGINX</a></td>
+        <td><a href="https://kubernetes.github.io/ingress-nginx/">NGINX Ingress Controller</a></td>
         <td>Kubernetes Ingress Controller</td>
-    </tr> -->
+    </tr>
+    <tr>
+        <td><img width="32" src="https://simpleicons.org/icons/diagramsdotnet.svg"></td>
+        <td><a href="https://github.com/mermaid-js/mermaid">mermaid</a></td>
+        <td>JavaScript-based diagramming and charting tool</td>
+    </tr>
 </table>
