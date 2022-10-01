@@ -4,6 +4,7 @@ inventory = YAML.load_file(File.join(__dir__, 'inventory.yml'))
 
 vm_box = "generic/ubuntu2204"
 default_interface = "Intel(R) Wi-Fi 6 AX201 160MHz"
+# default_interface = "Intel(R) Ethernet Connection (13) I219-LM"
 
 Vagrant.configure("2") do |config|
   inventory['all']['children'].each do |group, properties|
@@ -23,31 +24,13 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/me.pub"
-
   if Vagrant.has_plugin?("vagrant-timezone")
     config.timezone.value = :host
   end
 
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/me.pub"
+
   config.vm.provision "shell", inline: <<-SHELL
     cat /home/vagrant/.ssh/me.pub >> /home/vagrant/.ssh/authorized_keys
   SHELL
-
-  # config.vm.provision "ansible" do |ansible|
-    # ansible.playbook = "playbook.yml"
-  # end
-
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine and only allow access
-  # via 127.0.0.1 to disable public access
-  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
-
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.0.0"
-
-  # Create a public network, which generally matched to bridged network.
-  # Bridged networks make the machine appear as another physical device on
-  # your network.
-  # config.vm.network "public_network"
 end
