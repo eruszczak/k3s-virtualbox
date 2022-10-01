@@ -5,6 +5,8 @@ kind: Application
 metadata:
   name: {{ $app.appName }}
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io # when Application is deleted, its resources will also be deleted
 spec:
   project: default # TODO
   source:
