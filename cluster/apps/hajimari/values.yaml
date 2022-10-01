@@ -15,3 +15,7 @@ hajimari:
           paths:
             - path: /
               pathType: Prefix
+  hajimari:
+    defaultEnable: true
+    namespaceSelector:
+      any: true
