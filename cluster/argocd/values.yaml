@@ -17,5 +17,5 @@ argo-cd:
       tls: []
 
   configs:
-    secret: # TODO find a different (not manual) way to encrypt this password, so the password can be stored in the plain text too
-      argocdServerAdminPassword: $2a$12$B3gFAA31nicwazIDbW2.yOjdDletqiGcddOgqbmWxyajElGDppxVm # -- Bcrypt hashed admin password
+    secret:
+      argocdServerAdminPassword: $2a$12$bIjjBTOvM53e4x1dqFN5UuNkAIAMjWDGYPJvAIftp3zpFPqCSwCOq # "admin" bcrypt hashed
