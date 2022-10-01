@@ -9,3 +9,6 @@ apps:
   - appName: ingress-nginx
     path: cluster/apps/ingress-nginx
     namespace: ingress-nginx
+  - appName: hajimari
+    path: cluster/apps/hajimari
+    namespace: hajimari
