@@ -12,3 +12,6 @@ apps:
   - appName: hajimari
     path: cluster/apps/hajimari
     namespace: hajimari
+  - appName: kuard
+    path: cluster/apps/kuard
+    namespace: kuard
