@@ -6,13 +6,13 @@ all:
           ansible_host: 192.168.0.200
           memory: 3072
           cpu: 2
-    # workers:
-    #   hosts:
-    #     worker0:
-    #       ansible_host: 192.168.100.201
-    #       memory: 1024
-    #       cpu: 1
-    #     worker1:
-    #       ansible_host: 192.168.100.202
-    #       memory: 1024
-    #       cpu: 1
+    workers:
+      hosts:
+        worker0:
+          ansible_host: 192.168.0.201
+          memory: 2048
+          cpu: 1
+        worker1:
+          ansible_host: 192.168.0.202
+          memory: 2048
+          cpu: 1
