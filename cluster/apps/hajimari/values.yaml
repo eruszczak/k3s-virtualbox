@@ -1,4 +1,8 @@
 hajimari:
+  image:
+    # TODO remove this https://github.com/toboshii/hajimari/blob/main/charts/hajimari/values.yaml
+    # https://github.com/toboshii/hajimari/issues/31#issuecomment-1029018459
+    tag: v0.2.0
   ingress:
     main:
       enabled: true
